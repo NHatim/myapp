@@ -23,9 +23,11 @@ const getAreasClients = async () => {
   await token()
   const area = await axios.get(`${baseURL}/api/game/areainfos`, {headers: headers})
   const clients = await axios.get(`${baseURL}/api/game/clients`, {headers: headers});
+  computeRiskAssesment(area);
 
-  area.data.forEach((temp) => {
-    console.log(temp)
+  area.data.forEach((data) => {
+    console.log(data)
+    
   })
 
 
