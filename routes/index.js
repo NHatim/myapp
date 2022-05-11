@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 require('dotenv').config();
 const axios = require('axios')
+const areaClient = []
 const headers = {
   hash:'',
   time: '',
@@ -22,7 +23,12 @@ const getAreasClients = async () => {
   await token()
   const area = await axios.get(`${baseURL}/api/game/areainfos`, {headers: headers})
   const clients = await axios.get(`${baseURL}/api/game/clients`, {headers: headers});
-  console.log(area.data, clients.data);
+
+  area.data.forEach((temp) => {
+    console.log(temp)
+  })
+
+
 
 }
 getAreasClients()
@@ -33,6 +39,11 @@ router.get('/', function(req, res, next) {
   console.log(process.env.teamUUID)
 
 });
+
+router.get('/riskassessment', function(req, res, next) {
+  
+
+})
 
 
 
